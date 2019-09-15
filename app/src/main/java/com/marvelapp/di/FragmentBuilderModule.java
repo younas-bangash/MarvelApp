@@ -14,7 +14,7 @@ import dagger.android.ContributesAndroidInjector;
 abstract class FragmentBuilderModule {
 
     @ContributesAndroidInjector
-    abstract CharacterListFragment contributeDoctorListFragment();
+    abstract CharacterListFragment contributeCharacterListFragment();
 
     @ContributesAndroidInjector
     abstract CharacterSearchingFragment contributeCharacterSearchingFragment();

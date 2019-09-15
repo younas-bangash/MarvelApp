@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * List adapter for doctor
+ * List adapter for character list
  */
 public class CharacterListAdapter extends BaseAdapter<RecyclerView.ViewHolder, MarvelCharacter> {
     public final MutableLiveData<MarvelCharacter> itemCallListener = new MutableLiveData<>();
@@ -71,9 +71,9 @@ public class CharacterListAdapter extends BaseAdapter<RecyclerView.ViewHolder, M
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof CharacterItemViewHolder) {
             CharacterItemViewHolder characterItemViewHolder = ((CharacterItemViewHolder) holder);
-            MarvelCharacter doctor = marvelCharacterList.get(position);
-            characterItemViewHolder.bindView(doctor);
-            loadCharacterImage(characterItemViewHolder.imageView, characterItemViewHolder.progressBar, doctor);
+            MarvelCharacter marvelCharacter = marvelCharacterList.get(position);
+            characterItemViewHolder.bindView(marvelCharacter);
+            loadCharacterImage(characterItemViewHolder.imageView, characterItemViewHolder.progressBar, marvelCharacter);
         }
     }
 

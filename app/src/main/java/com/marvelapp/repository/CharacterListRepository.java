@@ -19,7 +19,7 @@ import javax.inject.Inject;
 import retrofit2.Call;
 
 /**
- * Repository that is used for DoctorFragment
+ * Repository that is used for character list
  */
 public class CharacterListRepository {
     private int itemLoaded;

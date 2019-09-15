@@ -21,7 +21,7 @@ import com.marvelapp.util.Status;
 import com.marvelapp.viewmodel.CharacterListViewModel;
 
 /**
- * Fragment to display list of doctor
+ * Fragment to display list of characters
  */
 public class CharacterListFragment extends BaseFragment<CharacterListViewModel> {
     private FragmentCharacterListBinding listDataBinding;
@@ -82,20 +82,20 @@ public class CharacterListFragment extends BaseFragment<CharacterListViewModel> 
         setSupportedActionBar(listDataBinding.layoutToolbar.appBar);
         listDataBinding.layoutToolbar.appBar.setTitle("");
         initRecyclerView();
-        listDataBinding.layoutToolbar.searchIcon.setOnClickListener(view -> getNavController().navigate(R.id.action_doctorListFragment_to_characterSearchingFragment));
+        listDataBinding.layoutToolbar.searchIcon.setOnClickListener(view -> getNavController().navigate(R.id.action_characterListFragment_to_characterSearchingFragment));
         viewModel.getCharacterListAdapter().itemCallListener.observe(this, character -> {
             if (fragmentSharedViewModel != null) {
                 fragmentSharedViewModel.setModel(MarvelCharacter.class, character);
             }
-            getNavController().navigate(R.id.action_doctorListFragment_to_characterDetailFragment);
+            getNavController().navigate(R.id.action_characterListFragment_to_characterDetailFragment);
         });
         return dataBinding.getRoot();
     }
 
     private void initRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-        listDataBinding.doctorListView.setLayoutManager(layoutManager);
-        listDataBinding.doctorListView.setAdapter(viewModel.getCharacterListAdapter());
+        listDataBinding.characterListView.setLayoutManager(layoutManager);
+        listDataBinding.characterListView.setAdapter(viewModel.getCharacterListAdapter());
         viewModel.setPaginationScrollListener(new PaginationScrollListener(layoutManager) {
             @Override
             protected void loadMoreItems() {
@@ -104,7 +104,7 @@ public class CharacterListFragment extends BaseFragment<CharacterListViewModel> 
             }
         });
 
-        listDataBinding.doctorListView.addOnScrollListener(viewModel.getPaginationScrollListener());
+        listDataBinding.characterListView.addOnScrollListener(viewModel.getPaginationScrollListener());
     }
 
     @Override

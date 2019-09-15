@@ -83,7 +83,7 @@ public class CharacterSearchingFragment extends BaseFragment<CharacterSearchingV
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         searchingBinding = ((FragmentCharacterSearchingBinding) dataBinding);
-        searchingBinding.layoutToolbar.cancelAction.setOnClickListener(view -> getNavController().navigate(R.id.action_characterSearchingFragment_to_doctorListFragment));
+        searchingBinding.layoutToolbar.cancelAction.setOnClickListener(view -> getNavController().navigate(R.id.action_characterSearchingFragment_to_characterListFragment));
         setSupportedActionBar(searchingBinding.layoutToolbar.appBar);
         initRecyclerView();
         viewModel.initSearchViewWithDebounce(searchingBinding.layoutToolbar.editSearchView);

@@ -29,7 +29,7 @@
         </RelativeLayout>
 
         <TextView
-            android:id="@+id/doctorName"
+            android:id="@+id/characterName"
             android:padding="16dp"
             android:background="@android:color/darker_gray"
             android:layout_width="wrap_content"

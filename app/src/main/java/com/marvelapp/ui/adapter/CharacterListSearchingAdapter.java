@@ -38,9 +38,9 @@ public class CharacterListSearchingAdapter extends CharacterListAdapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof ItemViewHolder) {
             ItemViewHolder itemViewHolder = ((ItemViewHolder) holder);
-            MarvelCharacter doctor = getMarvelCharacterList().get(position);
-            itemViewHolder.bindView(doctor);
-            loadCharacterImage(itemViewHolder.imageView, itemViewHolder.progressBar, doctor);
+            MarvelCharacter marvelCharacter = getMarvelCharacterList().get(position);
+            itemViewHolder.bindView(marvelCharacter);
+            loadCharacterImage(itemViewHolder.imageView, itemViewHolder.progressBar, marvelCharacter);
         }
     }
 

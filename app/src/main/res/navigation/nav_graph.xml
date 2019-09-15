@@ -2,16 +2,16 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/doctorListFragment">
+    app:startDestination="@id/characterListFragment">
     <fragment
-        android:id="@+id/doctorListFragment"
+        android:id="@+id/characterListFragment"
         android:name="com.marvelapp.ui.fragment.CharacterListFragment"
-        android:label="DoctorListFragment" >
+        android:label="characterListFragment" >
         <action
-            android:id="@+id/action_doctorListFragment_to_characterSearchingFragment"
+            android:id="@+id/action_characterListFragment_to_characterSearchingFragment"
             app:destination="@id/characterSearchingFragment" />
         <action
-            android:id="@+id/action_doctorListFragment_to_characterDetailFragment"
+            android:id="@+id/action_characterListFragment_to_characterDetailFragment"
             app:destination="@id/characterDetailFragment" />
     </fragment>
     <fragment
@@ -19,8 +19,8 @@
         android:name="com.marvelapp.ui.fragment.CharacterSearchingFragment"
         android:label="CharacterSearchingFragment" >
         <action
-            android:id="@+id/action_characterSearchingFragment_to_doctorListFragment"
-            app:destination="@id/doctorListFragment" />
+            android:id="@+id/action_characterSearchingFragment_to_characterListFragment"
+            app:destination="@id/characterListFragment" />
         <action
             android:id="@+id/action_characterSearchingFragment_to_characterDetailFragment"
             app:destination="@id/characterDetailFragment" />
@@ -33,8 +33,8 @@
             android:id="@+id/action_characterDetailFragment_to_characterSearchingFragment"
             app:destination="@id/characterSearchingFragment"/>
         <action
-            android:id="@+id/action_characterDetailFragment_to_doctorListFragment"
-            app:destination="@id/doctorListFragment"
-            app:popUpTo="@+id/doctorListFragment" />
+            android:id="@+id/action_characterDetailFragment_to_characterListFragment"
+            app:destination="@id/characterListFragment"
+            app:popUpTo="@+id/characterListFragment" />
     </fragment>
 </navigation>

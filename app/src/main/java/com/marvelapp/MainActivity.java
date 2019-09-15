@@ -41,10 +41,10 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
 
     @Override
     public void onBackPressed() {
-        if (R.id.doctorListFragment == navController.getCurrentDestination().getId()) {
+        if (R.id.characterListFragment == navController.getCurrentDestination().getId()) {
             finish();
         } else if(R.id.characterDetailFragment == navController.getCurrentDestination().getId()) {
-            Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.action_characterDetailFragment_to_doctorListFragment);
+            Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.action_characterDetailFragment_to_characterListFragment);
         } else {
             super.onBackPressed();
         }

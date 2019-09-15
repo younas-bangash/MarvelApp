@@ -20,7 +20,7 @@ public abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(CharacterListViewModel.class)
-    abstract ViewModel bindsDoctorListViewModel(CharacterListViewModel viewModel);
+    abstract ViewModel bindsCharacterListViewModel(CharacterListViewModel viewModel);
 
     @Binds
     @IntoMap

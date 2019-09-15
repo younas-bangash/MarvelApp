@@ -37,7 +37,7 @@ public class CharacterDetailFragment extends BaseFragment<CharacterDetailViewMod
         fragmentCharacterDetailBinding = (FragmentCharacterDetailBinding) dataBinding;
         setSupportedActionBar(fragmentCharacterDetailBinding.toolbar);
         initCollapsingToolbar();
-        fragmentCharacterDetailBinding.navigateBack.setOnClickListener(view -> getNavController().navigate(R.id.action_characterDetailFragment_to_doctorListFragment));
+        fragmentCharacterDetailBinding.navigateBack.setOnClickListener(view -> getNavController().navigate(R.id.action_characterDetailFragment_to_characterListFragment));
         return fragmentCharacterDetailBinding.getRoot();
     }
 

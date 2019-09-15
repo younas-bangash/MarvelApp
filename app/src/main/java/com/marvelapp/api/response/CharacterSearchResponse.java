@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.marvelapp.model.CharacterData;
 
 /**
- * Response class for searching the doctor
+ * Response class for searching the character
  */
 public class CharacterSearchResponse {
     private String code;

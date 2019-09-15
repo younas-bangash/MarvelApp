@@ -19,7 +19,6 @@
     <string name="action_search">Search</string>
     <string name="ok">OK</string>
     <string name="service_error">Service Error</string>
-    <string name="search_doctor_here">Search Doctor Here</string>
 
     <string name="cancel">Cancel</string>
     <string name="searching_hint">Search…</string>
