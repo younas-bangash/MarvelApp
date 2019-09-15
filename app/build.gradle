@@ -1,0 +1,136 @@
+apply plugin: 'com.android.application'
+apply plugin: "org.sonarqube"
+apply plugin: "jacoco"
+
+jacoco {
+    toolVersion = "0.8.1"
+}
+
+tasks.withType(Test) {
+    jacoco.includeNoLocationClasses = true
+}
+
+task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport']) {
+
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+
+    def fileFilter = ['**/R.class', '**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*', '**/*Test*.*', 'android/**/*.*']
+    def debugTree = fileTree(dir: "$project.buildDir/intermediates/classes/debug", excludes: fileFilter)
+    def mainSrc = "$project.projectDir/src/main/java"
+    sourceDirectories = files([mainSrc])
+    classDirectories = files([debugTree])
+    executionData = fileTree(dir: project.buildDir, includes: [
+            'jacoco/testDebugUnitTest.exec', 'outputs/code-coverage/connected/*coverage.ec'
+    ])
+}
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.marvelapp"
+        minSdkVersion 17
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0.0"
+        dataBinding.enabled = true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sonarqube {
+        properties {
+            def appProject = project(':app')
+            property "sonar.sources", "src/main"
+            property "sonar.projectName", "MavelMovieApp" // Name of your project
+            property "sonar.projectVersion", "1.0.0" // Version of your project
+            property "sonar.projectDescription", "Application to search movies"
+            property "sonar.projectKey", "AndroidCA"
+            property "sonar.host.url", "http://localhost:9005"
+            property "sonar.language", "java"
+            property "sonar.sources", "src/main/"
+            property "sonar.sources", "src/main/java"
+            property "sonar.projectVersion", appProject.android.defaultConfig.versionName + appProject.android.defaultConfig.versionCode
+
+            // Version of your project
+            property "sonar.tests", "src/test/java"
+            property "sonar.exclusions", "**/di/**, **/data/**, **/ui/**"
+            property "sonar.coverage.exclusions", "**/di/**, */data/**, **/ui/**"
+
+            property "sonar.java.coveragePlugin", "jacoco"
+            property "sonar.jacoco.reportPaths", "build/jacoco/testBranchDevDebugUnitTest.exec"
+            property "sonar.android.lint.report", "build/outputs/lint-results-debug.xml"
+
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    final DAGGER_VERSION = '2.21'
+    final ARCHITECTURE_COMPONENT_VERSION = '1.1.1'
+    final OKHTTP3_VERSION = '3.10.0'
+    final RETROFIT_VERSION = '2.3.0'
+    final PAGING_VERSION = '2.1.0'
+    final ROOM_VERSION = '1.1.1'
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:2.19.0'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    testImplementation "android.arch.core:core-testing:1.1.1"
+
+    // androidx Component
+    implementation 'androidx.navigation:navigation-fragment:2.1.0'
+    implementation 'androidx.navigation:navigation-ui:2.1.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "androidx.paging:paging-runtime:$PAGING_VERSION"
+
+    // Dagger 2
+    implementation "com.google.dagger:dagger:$DAGGER_VERSION"
+    implementation "com.google.dagger:dagger-android-support:$DAGGER_VERSION"
+    annotationProcessor "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$DAGGER_VERSION"
+    androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
+
+    // Android Architecture Components
+    implementation "android.arch.lifecycle:extensions:$ARCHITECTURE_COMPONENT_VERSION"
+    implementation "android.arch.lifecycle:common-java8:$ARCHITECTURE_COMPONENT_VERSION"
+    implementation "android.arch.lifecycle:reactivestreams:$ARCHITECTURE_COMPONENT_VERSION"
+
+    // okhttp version
+    implementation "com.squareup.okhttp3:logging-interceptor:$OKHTTP3_VERSION"
+    implementation "com.squareup.okhttp3:okhttp-urlconnection:$OKHTTP3_VERSION"
+    implementation "com.squareup.okhttp3:logging-interceptor:$OKHTTP3_VERSION"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$RETROFIT_VERSION"
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+    // Room SQLite for data persistence
+    implementation "android.arch.persistence.room:runtime:$ROOM_VERSION"
+    annotationProcessor "android.arch.persistence.room:compiler:$ROOM_VERSION"
+
+    //Image loading and caching library
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+}

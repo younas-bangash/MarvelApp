@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/doctorListFragment">
+    <fragment
+        android:id="@+id/doctorListFragment"
+        android:name="com.marvelapp.ui.fragment.CharacterListFragment"
+        android:label="DoctorListFragment" >
+        <action
+            android:id="@+id/action_doctorListFragment_to_characterSearchingFragment"
+            app:destination="@id/characterSearchingFragment" />
+        <action
+            android:id="@+id/action_doctorListFragment_to_characterDetailFragment"
+            app:destination="@id/characterDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/characterSearchingFragment"
+        android:name="com.marvelapp.ui.fragment.CharacterSearchingFragment"
+        android:label="CharacterSearchingFragment" >
+        <action
+            android:id="@+id/action_characterSearchingFragment_to_doctorListFragment"
+            app:destination="@id/doctorListFragment" />
+        <action
+            android:id="@+id/action_characterSearchingFragment_to_characterDetailFragment"
+            app:destination="@id/characterDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/characterDetailFragment"
+        android:name="com.marvelapp.ui.fragment.CharacterDetailFragment"
+        android:label="CharacterDetailFragment" >
+        <action
+            android:id="@+id/action_characterDetailFragment_to_characterSearchingFragment"
+            app:destination="@id/characterSearchingFragment"/>
+        <action
+            android:id="@+id/action_characterDetailFragment_to_doctorListFragment"
+            app:destination="@id/doctorListFragment"
+            app:popUpTo="@+id/doctorListFragment" />
+    </fragment>
+</navigation>

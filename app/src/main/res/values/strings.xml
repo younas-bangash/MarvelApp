@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Marvel</string>
+
+    <!-- Network Errors-->
+    <string name="networkError">Oh! You are not connected to a wifi or cellular data network.
+        Please connect and try again</string>
+    <string name="networkErrorCode">NO_INTERNET_CONNECTION</string>
+    <string name="unknownError">Something went wrong!</string>
+
+    <string name="requestTimeOutError">Oops! We couldn’t capture your request in time.Please try again.</string>
+
+    <string name="errorCodeMalformedJson">MALFORMED_JSON</string>
+    <string name="responseMalformedJson">Oops! We hit an error. Try again later.</string>
+
+    <string name="errorCodeConnectFailed">Connection failed</string>
+    <string name="responseConnectFailed">Oops! Connection timeout.</string>
+
+    <string name="search_hint">Search Articles</string>
+    <string name="action_search">Search</string>
+    <string name="ok">OK</string>
+    <string name="service_error">Service Error</string>
+    <string name="search_doctor_here">Search Doctor Here</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="searching_hint">Search…</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_character_name">Name</string>
+    <string name="title_description">Description</string>
+    <string name="title_comics">Comics</string>
+    <string name="title_stories">Stories</string>
+    <string name="title_event">Events</string>
+    <string name="title_related_links">Related Links</string>
+    <string name="title_details">Details</string>
+    <string name="title_wiki">Wiki</string>
+    <string name="title_comic_link">Comic Link</string>
+</resources>
