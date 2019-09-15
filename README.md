@@ -5,7 +5,7 @@
 1. MVVM Architectural pattern
 2. Offline Support
 3. Unit test demonstration using JUnit and Mockito
-4. UI unit test demonstartion using Espresso
+4. UI unit test demonstration using Espresso
 5. Gradle scripts for running sonarqube static code analysis, code coverage, etc.
 6. Use AndroidX for Android Support Libraries
 7. Use of The Navigation component library
@@ -19,10 +19,18 @@ The whole application is built based on the MVVM architectural pattern.
 
 The main advatage of using MVVM, there is no two way dependency between ViewModel and Model unlike MVP. Here the view can observe the datachanges in the viewmodel as we are using LiveData which is lifecycle aware. The viewmodel to view communication is achieved through observer pattern (basically observing the state changes of the data in the viewmodel).
 
+# Navigation Graph
+<img src="/screenshots/nav_graph.PNG" width="346" height="615" alt="Home"/> 
+
+# Overview of Offline Architecture
+Consider the following diagram, which shows how all the modules should interact with one another in the app:
+![alt text](https://developer.android.com/topic/libraries/architecture/images/final-architecture.png)
+
 # Screenshots
-<img src="/screenshots/screenshot_mainpage.png" width="346" height="615" alt="Home"/> 
-<img src="/screenshots/screenshot_details.png" width="346" height="615" alt="Home"/>
-<img src="/screenshots/screenshot_search.png" width="346" height="615" alt="Home"/>
+<img src="/screenshots/1.png" width="346" height="615" alt="Home"/> 
+<img src="/screenshots/2.png" width="346" height="615" alt="Home"/>
+<img src="/screenshots/3.png" width="346" height="615" alt="Home"/>
+<img src="/screenshots/4.png" width="346" height="615" alt="Home"/>
 
 # Programming Practices Followed
 a) Android Architectural Components <br/>
